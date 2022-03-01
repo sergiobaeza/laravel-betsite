@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartidosTable extends Migration
+class CreateGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePartidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('partido', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->float('cuota1');
             $table->float('cuotaX');
@@ -33,6 +33,6 @@ class CreatePartidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partido');
+        Schema::dropIfExists('games');
     }
 }
