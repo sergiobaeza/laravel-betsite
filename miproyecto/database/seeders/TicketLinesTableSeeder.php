@@ -15,7 +15,7 @@ class TicketLinesTableSeeder extends Seeder
     public function run()
     {
         // Borramos los datos de la tabla
-        DB::table('ticket_lines')->delete();
+       
         // Añadimos datos a la tabla
         DB::table('ticket_lines')->insert([
             'cuotaElegida' => 1.24,
@@ -24,7 +24,7 @@ class TicketLinesTableSeeder extends Seeder
         ]);
         DB::table('ticket_lines')->insert([
             'cuotaElegida' => 1.28,
-            'game_id' => 2,
+            'game_id' => 1,
             'ticket_id' => 1,
         ]);
     }
