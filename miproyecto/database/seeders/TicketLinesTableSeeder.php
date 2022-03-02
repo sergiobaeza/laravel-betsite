@@ -24,7 +24,7 @@ class TicketLinesTableSeeder extends Seeder
         ]);
         DB::table('ticket_lines')->insert([
             'cuotaElegida' => 1.28,
-            'game_id' => 1,
+            'game_id' => 2,
             'ticket_id' => 1,
         ]);
     }

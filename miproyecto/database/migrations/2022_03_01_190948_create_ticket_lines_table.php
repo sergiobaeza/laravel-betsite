@@ -14,12 +14,12 @@ class CreateTicketLinesTable extends Migration
     public function up()
     {
         Schema::create('ticket_lines', function (Blueprint $table) {
-            //$table->id();
+            $table->id();
             $table->float('cuotaElegida');
             $table->timestamps();
             $table->foreignId('game_id')->constrained();        
             $table->foreignId('ticket_id')->constrained();
-            $table->primary(['game_id', 'ticket_id']);
+            $table->unique(['game_id', 'ticket_id']);
         });
     }
 
