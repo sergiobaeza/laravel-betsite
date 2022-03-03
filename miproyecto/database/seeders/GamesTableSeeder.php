@@ -35,5 +35,25 @@ class GamesTableSeeder extends Seeder
             'golesLocal' => 1,
             'golesVisitante' => 2
         ]);
+        DB::table('games')->insert([
+            'id' => 3,
+            'cuota1' => 1.06,
+            'cuotaX' => 2.13,
+            'cuota2' => 3.40,
+            'equipo1' => 'Real Madrid',
+            'equipo2' => 'Elche',
+            'golesLocal' => 4,
+            'golesVisitante' => 1
+        ]);
+        DB::table('games')->insert([
+            'id' => 4,
+            'cuota1' => 1.78,
+            'cuotaX' => 1.55,
+            'cuota2' => 2.12,
+            'equipo1' => 'Real Sociedad',
+            'equipo2' => 'Villareal',
+            'golesLocal' => 2,
+            'golesVisitante' => 2
+        ]);
     }
 }
