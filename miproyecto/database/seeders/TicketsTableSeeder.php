@@ -20,5 +20,10 @@ class TicketsTableSeeder extends Seeder
             'id' => 1,
             'dineroApostado' => 10.3,
         ]);
+
+        DB::table('tickets')->insert([
+            'id' => 2,
+            'dineroApostado' => 5,
+        ]);
     }
 }
