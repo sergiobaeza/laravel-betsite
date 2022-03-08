@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+
     use HasFactory;
     public function ticketLines(){
         return $this->hasMany('App\Models\TicketLine'); 

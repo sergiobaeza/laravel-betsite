@@ -9,6 +9,9 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['dineroApostado']; 
+
+
     public function ticketLines(){
         return $this->hasMany('App\Models\TicketLine'); 
     }
