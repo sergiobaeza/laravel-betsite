@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/games', [GamesController::class, 'index'])->name('games');
+Route::get('/games', [GamesController::class, 'show'])->name('games');
+Route::path('/games', [GamesController::class, 'update'])->name('games-update');
+Route::delete('/games', [GamesController::class, 'delete'])->name('games-delete');
