@@ -16,6 +16,11 @@ class CreateCreditCardsTable extends Migration
         Schema::create('credit_cards', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('num');
+            $table->integer('cvv');
+            $table->integer('cadMonth'); 
+            $table->integer('cadYear'); 
+            $table->foreignId('user_id')->constrained(); 
         });
     }
 

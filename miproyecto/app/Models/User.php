@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
+
+    public function tickets(){
+        return $this->hasMany('App\Models\Ticket'); 
+    }
 }
