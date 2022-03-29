@@ -6,19 +6,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 use App\Models\Game;
 
 
-class GameController extends BaseController{
+class GameController extends Controller{
     
     public function index(){
         $games = Game::all();
-        return view('games.index', ['games' => $games]);
+        //return view('games.index', ['games' => $games]);
     }
 
     public function show($id){
         $game = Game::find($id);
-        return view('games.show', ['game' => $game]);
+        //return view('games.show', ['game' => $game]);
     }
 
     public function update(Request $request, $id){
@@ -33,7 +34,7 @@ class GameController extends BaseController{
         $game->golesVisitante = $request->golesVisitante;
         $game->timestamps = $request->timestamps;
 
-        return redirect()->route('games')->with('success', 'Partido actualizado');
+        //return redirect()->route('games')->with('success', 'Partido actualizado');
     }
 
     public function destroy($id){
