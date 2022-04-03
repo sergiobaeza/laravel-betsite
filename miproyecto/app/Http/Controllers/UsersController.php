@@ -33,6 +33,24 @@ class UsersController extends Controller
         return redirect()->route('users-add')->with('success', 'Usuario creado correctamente'); 
     }
 
+    public function filter(Request $request){
+        if($request->name == null && $request->email == null){
+            return redirect()->route('users-index'); 
+        }
+        else if($request->name != null && $request->email == null){
+            $users = User::where('name', 'LIKE', '%' . $request->name . '%')->paginate(15); 
+            return view('users.index', ['users' => $users]); 
+        }
+        else if($request->name == null && $request->email != null){
+            $users = User::where('email', $request->email)->paginate(15); 
+            return view('users.index', ['users' => $users]); 
+        }
+        else{
+            $users = User::where('email', $request->email)->where('name', 'LIKE', '%' . $request->name . '%')->paginate(15); 
+            return view('users.index', ['users' => $users]); 
+        }
+    }
+
 
     public function update(Request $request, $id){
         // validamos los datos
@@ -66,9 +84,23 @@ class UsersController extends Controller
     }
 
     public function index(){
+ 
         $users = User::paginate(10);
         return view('users.index', ['users' => $users]); 
-        
+    }
+
+    public function indexBy($opt){
+        $users = User::paginate(15); 
+        if($opt == 'name'){
+            $users = User::orderBy('name', 'ASC')->paginate(15); 
+        }
+        else if($opt == 'email'){
+            $users = User::orderBy('email', 'ASC')->paginate(15); 
+        }
+        else if($opt == 'balance'){
+            $users = User::orderBy('balance', 'DESC')->paginate(15); 
+        }
+        return view('users.index', ['users' => $users]); 
     }
     
     public function show($id){

@@ -14,9 +14,28 @@
         @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
         @endif
+
+        <div class="row mx-auto">
+            <div class="col-md-9 d-flex align-items-center">
                 <form action="{{ route('users-add') }}">
-                    <input type="submit" value="Añadir un nuevo usuario" class="btn btn-primary my-2" /></div>
-            </form>
+                        <input type="submit" value="Añadir un nuevo usuario" class="btn btn-primary my-2" /></div>
+                </form>
+
+                
+            </div>
+            <form class="form-inline" action="{{ route('users-filter') }}" method="POST">
+                @csrf
+                    <input class="d-inline form-control mr-sm-2" type="search" name="name" id="name" placeholder="Filtrar por nombre..." aria-label="Search">
+                    <input class="d-inline form-control mr-sm-2" type="search" name="email" id="email" placeholder="Filtrar por email..." aria-label="Search">
+                    <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
+                </form>
+            
+        </div>
+            Ordenar por:
+            <a href="/users">Id</a>
+            <a href="/users/order/name">Nombre</a>
+            <a href="/users/order/email">Correo</a>
+            <a href="/users/order/balance">Balance</a>
             <table class="table table-striped table-hover">
             <thead>
                 <tr>
