@@ -14,13 +14,17 @@ class TicketLinesController extends Controller
         $ticketline->ticket_id = $request->ticket_id;
         $ticketline->save();
 
-        // falta devolver la vista/routa
+        return redirect()->route('ticketlines-add')->with('success', 'Línea de boleto creada correctamente');
     }
 
-    public function shown($id){
+    public function show($id){
         $ticketline = TicketLine::find($id);
-        // falta devolver la vista
+        return view('ticketlines.show', ['ticketline' => $ticketline]);
 
+    }
+    public function index(){
+        $ticketline = TicketLine::paginate(10);
+        return view('ticketlines.index', ['ticketline' => $ticketline]);
     }
 
     public function update(Request $request, $id){
@@ -30,7 +34,7 @@ class TicketLinesController extends Controller
         $ticketline->ticket_id = $request->ticket_id;
         $ticketline->save();
 
-        // falta devolver la vista/routa
+        return redirect()->route('ticketlines-edit', ['id' => $ticketline->ticket_id])->with('succes', 'Línea de boleto actualizada correctamente');
 
     }
 
@@ -38,6 +42,6 @@ class TicketLinesController extends Controller
         $ticketline = TicketLine::find($id);
         $ticketline->delete();
 
-        // falta devolver la vista/routa
+        return redirect()->route('ticketlines-index')->with('succes', 'Línea de boleto eliminada correctamente');
     }
 }

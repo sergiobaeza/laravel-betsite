@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController; 
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TicketLinesController; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,11 @@ Route::get('/users/order/{opt}', [UsersController::class, 'indexBy'])->name('use
 Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users-delete'); 
 Route::get('/users/{id}', [UsersController::class, 'show'])->name('users-edit'); 
 Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users-update'); 
+
+Route::get('/ticketlines/add', function() { return view('ticketlines.form'); })->name('ticketlines-add');
+Route::post('ticketlines/add', [TicketLinesController::class, 'store'])->name('ticketlines-store');  
+Route::get('/ticketlines', [TicketLinesController::class, 'index'])->name('ticketlines-index');
+
+Route::delete('/ticketlines/{id}', [TicketLinesController::class, 'destroy'])->name('ticketlines-delete'); 
+Route::get('/ticketlines/{id}', [TicketLinesController::class, 'show'])->name('ticketlines-edit'); 
+Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update'); 
