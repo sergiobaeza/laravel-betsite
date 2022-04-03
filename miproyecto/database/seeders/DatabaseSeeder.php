@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CleanTablesSeeder::class);
         $this->call(GamesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(CreditCardsTableSeeder::class);
         $this->call(TicketsTableSeeder::class);
         $this->call(TicketLinesTableSeeder::class);
     }

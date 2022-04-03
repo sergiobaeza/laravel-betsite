@@ -13,10 +13,12 @@ class CleanTablesSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
         DB::table('ticket_lines')->delete();
+        DB::table('credit_cards')->delete();
         DB::table('games')->delete();
         DB::table('tickets')->delete();
+        DB::table('users')->delete();
 
     }
 }
