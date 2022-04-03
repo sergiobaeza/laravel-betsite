@@ -26,6 +26,9 @@ Route::get('/', function () {
 Route::get('/users/add', function() {return view('users.form'); })->name('users-add');
 Route::post('users/add', [UsersController::class, 'store'])->name('users-store');  
 Route::get('/users', [UsersController::class, 'index'])->name('users-index'); 
+Route::post('/users', [UsersController::class, 'filter'])->name('users-filter');
+Route::get('/users/order/{opt}', [UsersController::class, 'indexBy'])->name('users-index-order'); 
+
 Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users-delete'); 
 Route::get('/users/{id}', [UsersController::class, 'show'])->name('users-edit'); 
 Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users-update'); 
