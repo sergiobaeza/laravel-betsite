@@ -27,3 +27,5 @@ Route::get('/users/add', function() {return view('users.form'); })->name('users-
 Route::post('users/add', [UsersController::class, 'store'])->name('users-store');  
 Route::get('/users', [UsersController::class, 'index'])->name('users-index'); 
 Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users-delete'); 
+Route::get('/users/{id}', [UsersController::class, 'show'])->name('users-edit'); 
+Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users-update'); 
