@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,8 @@ Route::get('/', function () {
 //Route::get('/games', [GamesController::class, 'show'])->name('games');
 //Route::path('/games', [GamesController::class, 'update'])->name('games-update');
 //Route::delete('/games', [GamesController::class, 'delete'])->name('games-delete');
+
+Route::get('/users/add', function() {return view('users.form'); })->name('users-add');
+Route::post('users/add', [UsersController::class, 'store'])->name('users-store');  
+Route::get('/users', [UsersController::class, 'index'])->name('users-index'); 
+Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users-delete'); 
