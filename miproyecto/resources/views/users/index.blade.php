@@ -72,8 +72,9 @@
                     </div>
                     </div>
 
-                    
-                    <button class="btn btn-warning btn-sm">Editar</button>
+                    <form class="d-inline" action="{{ route('users-edit', ['id' => $user->id]) }}">
+                        <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </form>
 
                 </td>
                 </tr>
@@ -85,6 +86,5 @@
         @endforeach
         </table>
         </div>
-
     {{ $users->links() }}
 @endsection

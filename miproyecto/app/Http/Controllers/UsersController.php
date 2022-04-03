@@ -36,17 +36,24 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){
         // validamos los datos
-        $this->validateUser($request); 
+
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required', 
+            'balance' => 'required'
+        ]); 
+        
 
 
         $user = User::find($id); 
         $user->name = $request->name; 
         $user->email = $request->email; 
-        $user->password = $request->password; 
-        $user->balance = 0.0; 
+        if($request->password != NULL)
+            $user->password = $request->password; 
+        $user->balance = $request->balance; 
 
         $user->save(); 
-
+        return redirect()->route('users-edit', ['id' => $user->id])->with('success', 'Usuario actualizado correctamente'); 
     }
 
     public function destroy(Request $request, $id){
@@ -62,5 +69,10 @@ class UsersController extends Controller
         $users = User::paginate(15);
         return view('users.index', ['users' => $users]); 
         
+    }
+    
+    public function show($id){
+        $user = User::findOrFail($id); 
+        return view('users.show', ['user' => $user]);
     }
 }
