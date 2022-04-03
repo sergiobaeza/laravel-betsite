@@ -43,4 +43,6 @@ class GameController extends Controller{
 
         return redirect()->route('games')->with('success', 'Partido eleminado');
     }
+
+    
 }
