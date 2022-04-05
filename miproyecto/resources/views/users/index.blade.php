@@ -62,12 +62,12 @@
                 <td>                     
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUser">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUser{{ $user->id }}">
                         Eliminar
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="deleteUserModal" aria-hidden="true">
+                    <div class="modal fade" id="deleteUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUserModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -81,7 +81,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <form action="{{ route('users-delete', [$user->id]) }}" method="POST">
+                            <form action="{{ route('users-delete', ['id' => $user->id]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Eliminar</button>

@@ -25,15 +25,17 @@ Route::get('/', function () {
 //Route::path('/games', [GamesController::class, 'update'])->name('games-update');
 //Route::delete('/games', [GamesController::class, 'delete'])->name('games-delete');
 
+// USERS
 Route::get('/users/add', function() {return view('users.form'); })->name('users-add');
 Route::post('users/add', [UsersController::class, 'store'])->name('users-store');  
 Route::get('/users', [UsersController::class, 'index'])->name('users-index'); 
 Route::post('/users', [UsersController::class, 'filter'])->name('users-filter');
 Route::get('/users/order/{opt}', [UsersController::class, 'indexBy'])->name('users-index-order'); 
-
 Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users-delete'); 
 Route::get('/users/{id}', [UsersController::class, 'show'])->name('users-edit'); 
 Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users-update'); 
+
+
 
 Route::get('/ticketlines/add', function() { return view('ticketlines.form'); })->name('ticketlines-add');
 Route::post('ticketlines/add', [TicketLinesController::class, 'store'])->name('ticketlines-store');  
