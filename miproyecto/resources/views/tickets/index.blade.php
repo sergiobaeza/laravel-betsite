@@ -17,22 +17,11 @@
 
         <div class="row mx-auto">
             <div class="col-md-9 d-flex align-items-center">
-                <form action="{{ route('users-add') }}">
+                <form action="{{ route('tickets-add') }}">
                         <input type="submit" value="Añadir un nuevo boleto" class="btn btn-primary my-2" /></div>
-                </form>
-
-                
-            </div>
-            <form class="form-inline" action="{{ route('users-filter') }}" method="POST">
-                @csrf
-                    <input class="d-inline form-control mr-sm-2" type="search" name="name" id="name" placeholder="Filtrar por nombre..." aria-label="Search">
-                    <input class="d-inline form-control mr-sm-2" type="search" name="email" id="email" placeholder="Filtrar por email..." aria-label="Search">
-                    <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
                 </form>
             
         </div>
-            Ordenar por:
-            <a href="/users">Id</a>
             <table class="table table-striped table-hover">
             <thead>
                 <tr>

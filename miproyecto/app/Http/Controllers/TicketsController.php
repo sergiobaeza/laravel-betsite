@@ -10,17 +10,12 @@ use App\Models\TicketLine;
 class TicketsController extends Controller
 {
     public function store(Request $request){
-        $request->validate([
-            'dineroApostado' => 'required'
-        ]);
-
         $ticket = new Ticket();
         $ticket->dineroApostado = $request->dineroApostado;
         $ticket->user_id = $request->user_id;
 
-        $ticket->save();
-
-        // falta retornar la vista
+        $ticket->save();    
+        return redirect()->route('tickets-add')->with('success', 'Boleto añadidura correctamente'); 
     }
 
     public function update(Request $request, $id) {
@@ -29,6 +24,7 @@ class TicketsController extends Controller
         $ticket->dineroApostado = $request->dineroApostado;
         $ticket->user_id = $request->user_id;
         $ticket->save();
+        return redirect()->route('tickets-edit', ['id' => $ticket->id])->with('success', 'Boleto actualizado correctamente'); 
     }
 
     public function destroy(Request $request, $id) {
