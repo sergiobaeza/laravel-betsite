@@ -17,8 +17,8 @@ class CreateTicketLinesTable extends Migration
             $table->id();
             $table->float('cuotaElegida');
             $table->timestamps();
-            $table->foreignId('game_id')->constrained();        
-            $table->foreignId('ticket_id')->constrained();
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');        
+            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');       
             $table->unique(['game_id', 'ticket_id']);
         });
     }

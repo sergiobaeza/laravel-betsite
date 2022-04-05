@@ -9,9 +9,9 @@ class TicketLinesController extends Controller
 {
     public function store(Request $request){
         $ticketline = new TicketLine;
-        $ticketline->cuotaElegida = $request->cuotaElegida;
-        $ticketline->game_id = $request->game_id;
-        $ticketline->ticket_id = $request->ticket_id;
+        $ticketline->cuotaElegida = $request->cuota;
+        $ticketline->game_id = $request->game;
+        $ticketline->ticket_id = $request->ticket;
         $ticketline->save();
 
         return redirect()->route('ticketlines-add')->with('success', 'Línea de boleto creada correctamente');
@@ -29,9 +29,9 @@ class TicketLinesController extends Controller
 
     public function update(Request $request, $id){
         $ticketline = TicketLine::find($id);
-        $ticketline->cuotaElegida = $request->cuotaElegida;
-        $ticketline->game_id = $request->game_id;
-        $ticketline->ticket_id = $request->ticket_id;
+        $ticketline->cuotaElegida = $request->cuota;
+        $ticketline->game_id = $request->game;
+        $ticketline->ticket_id = $request->ticket;
         $ticketline->save();
 
         return redirect()->route('ticketlines-edit', ['id' => $ticketline->ticket_id])->with('succes', 'Línea de boleto actualizada correctamente');
