@@ -24,7 +24,7 @@ class TicketLinesController extends Controller
     }
     public function index(){
         $ticketline = TicketLine::paginate(10);
-        return view('ticketlines.index', ['ticketline' => $ticketline]);
+        return view('ticketlines.index', ['ticketlines' => $ticketline]);
     }
 
     public function update(Request $request, $id){
