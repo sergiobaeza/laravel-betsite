@@ -1,7 +1,7 @@
 @extends('layout')
 
 
-@section('title', 'Usuarios')
+@section('title', 'Tickets')
 
 @section('content')
 
@@ -18,7 +18,7 @@
         <div class="row mx-auto">
             <div class="col-md-9 d-flex align-items-center">
                 <form action="{{ route('users-add') }}">
-                        <input type="submit" value="Añadir un nuevo usuario" class="btn btn-primary my-2" /></div>
+                        <input type="submit" value="Añadir un nuevo boleto" class="btn btn-primary my-2" /></div>
                 </form>
 
                 
@@ -33,55 +33,47 @@
         </div>
             Ordenar por:
             <a href="/users">Id</a>
-            <a href="/users/order/name">Nombre</a>
-            <a href="/users/order/email">Correo</a>
-            <a href="/users/order/balance">Balance</a>
             <table class="table table-striped table-hover">
             <thead>
                 <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Contraseña</th>
-                <th scope="col">Balance</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">Dinero Apostado</th>
+                <th scope="col">Usuario</th>
                 </tr>
             </thead>
 
 
-        @foreach ($users as $user)
+        @foreach ($tickets as $ticket)
             
 
             <tbody>
                 <tr>
-                <th scope="row">{{ $user->id }}</th>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->password }}</td>
-                <td>{{ $user->balance }}</td>
+                <th scope="row">{{ $ticket->id }}</th>
+                <td>{{ $ticket->dineroApostado }}</td>
+                <td>{{ $ticket->user_id }}</td>
                 <td>                     
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUser{{ $user->id }}">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteTicket">
                         Eliminar
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="deleteUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUserModal" aria-hidden="true">
+                    <div class="modal fade" id="deleteTicket" tabindex="-1" role="dialog" aria-labelledby="deleteTicketModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="deleteUserModal">Eliminar usuario</h5>
+                            <h5 class="modal-title" id="deleteTicketModal">Eliminar Boleto</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            Estás seguro que deseas eliminar al usuario <b>{{ $user->name }}</b> con id <b>{{ $user->id }}</b>. Esta accion no será reversible
+                            ¿Estás seguro que deseas eliminar el boleto <b>{{ $ticket->id }}. Esta accion no será reversible
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <form action="{{ route('users-delete', ['id' => $user->id]) }}" method="POST">
+                            <form action="{{ route('tickets-delete', [$ticket->id]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -91,7 +83,7 @@
                     </div>
                     </div>
 
-                    <form class="d-inline" action="{{ route('users-edit', ['id' => $user->id]) }}">
+                    <form class="d-inline" action="{{ route('tickets-edit', ['id' => $ticket->id]) }}">
                         <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                     </form>
 
@@ -105,7 +97,7 @@
         @endforeach
         </table>
         <div class="d-flex justify-content-center">
-            {{ $users->links() }}
+            {{ $tickets->links() }}
         </div>
         </div>
     

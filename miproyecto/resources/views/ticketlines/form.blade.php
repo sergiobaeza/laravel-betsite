@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="p-3">
-        <form  method="POST" action="{{ route('tickelines-store') }}">
+        <form  method="POST" action="{{ route('ticketlines-store') }}">
             @csrf
 
             <div class="mb-3 col">
@@ -37,7 +37,7 @@
             </div>
         </form>
                     <div class="d-flex flex-row-reverse">
-                <form action="{{ route('tickelines-index') }}">
+                <form action="{{ route('ticketlines-index') }}">
                     <input type="submit" value="Volver" class="btn btn-primary my-2" /></div>
             </form>
             
