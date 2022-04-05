@@ -15,4 +15,9 @@ class Ticket extends Model
     public function ticketLines(){
         return $this->hasMany('App\Models\TicketLine'); 
     }
+
+    public function user(){
+        return $this->belongsTo('App\Models\Users'); 
+    }
+
 }

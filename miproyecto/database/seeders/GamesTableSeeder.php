@@ -55,5 +55,126 @@ class GamesTableSeeder extends Seeder
             'golesLocal' => 2,
             'golesVisitante' => 2
         ]);
+        DB::table('games')->insert([
+            'id' => 5,
+            'cuota1' => 1.55,
+            'cuotaX' => 1.70,
+            'cuota2' => 2.16,
+            'equipo1' => 'Real Madrid',
+            'equipo2' => 'Barcelona',
+            'golesLocal' => 1,
+            'golesVisitante' => 4
+        ]);
+        DB::table('games')->insert([
+            'id' => 6,
+            'cuota1' => 1.25,
+            'cuotaX' => 1.50,
+            'cuota2' => 3.00,
+            'equipo1' => 'Tenerife',
+            'equipo2' => 'Las Palmas',
+            'golesLocal' => 3,
+            'golesVisitante' => 0
+        ]);
+        DB::table('games')->insert([
+            'id' => 7,
+            'cuota1' => 1.62,
+            'cuotaX' => 1.89,
+            'cuota2' => 2.12,
+            'equipo1' => 'Bayern de Munich',
+            'equipo2' => 'Borussia Dormund',
+            'golesLocal' => 2,
+            'golesVisitante' => 2
+        ]);
+        DB::table('games')->insert([
+            'id' => 8,
+            'cuota1' => 1.35,
+            'cuotaX' => 1.55,
+            'cuota2' => 2.16,
+            'equipo1' => 'Hercules',
+            'equipo2' => 'Elche',
+            'golesLocal' => 4,
+            'golesVisitante' => 0
+        ]);
+        DB::table('games')->insert([
+            'id' => 9,
+            'cuota1' => 1.80,
+            'cuotaX' => 2.00,
+            'cuota2' => 2.50,
+            'equipo1' => 'Atletico Madrid',
+            'equipo2' => 'Real Madrid',
+            'golesLocal' => 3,
+            'golesVisitante' => 3
+        ]);
+        DB::table('games')->insert([
+            'id' => 10,
+            'cuota1' => 1.40,
+            'cuotaX' => 1.70,
+            'cuota2' => 2.30,
+            'equipo1' => 'Sevilla',
+            'equipo2' => 'Barcelona',
+            'golesLocal' => 3,
+            'golesVisitante' => 0
+        ]);
+        DB::table('games')->insert([
+            'id' => 11,
+            'cuota1' => 1.50,
+            'cuotaX' => 1.70,
+            'cuota2' => 1.80,
+            'equipo1' => 'Real Madrid',
+            'equipo2' => 'Chelsea',
+            'golesLocal' => 1,
+            'golesVisitante' => 3
+        ]);
+        DB::table('games')->insert([
+            'id' => 12,
+            'cuota1' => 1.60,
+            'cuotaX' => 1.80,
+            'cuota2' => 2.30,
+            'equipo1' => 'Sevilla',
+            'equipo2' => 'Real Betis',
+            'golesLocal' => 2,
+            'golesVisitante' => 3
+        ]);
+        DB::table('games')->insert([
+            'id' => 13,
+            'cuota1' => 2.10,
+            'cuotaX' => 1.88,
+            'cuota2' => 1.50,
+            'equipo1' => 'Boca Juniors',
+            'equipo2' => 'River Plate',
+            'golesLocal' => 2,
+            'golesVisitante' => 1
+        ]);
+        DB::table('games')->insert([
+            'id' => 14,
+            'cuota1' => 1.55,
+            'cuotaX' => 1.71,
+            'cuota2' => 2.05,
+            'equipo1' => 'Milan',
+            'equipo2' => 'Inter Milan',
+            'golesLocal' => 2,
+            'golesVisitante' => 0
+        ]);
+        DB::table('games')->insert([
+            'id' => 15,
+            'cuota1' => 1.77,
+            'cuotaX' => 1.80,
+            'cuota2' => 1.60,
+            'equipo1' => 'Atletic de Bilbao',
+            'equipo2' => 'Real Sociedad',
+            'golesLocal' => 3,
+            'golesVisitante' => 2
+        ]);
+        DB::table('games')->insert([
+            'id' => 16,
+            'cuota1' => 1.40,
+            'cuotaX' => 1.62,
+            'cuota2' => 1.95,
+            'equipo1' => 'Barcelona',
+            'equipo2' => 'Valencia',
+            'golesLocal' => 1,
+            'golesVisitante' => 0
+        ]);
+
     }
 }

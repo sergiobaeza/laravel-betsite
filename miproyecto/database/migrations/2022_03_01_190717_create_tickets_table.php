@@ -16,7 +16,9 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->float('dineroApostado');
+            $table->foreignId('user_id')->constrained(); 
             $table->timestamps();
+            $table->unique(['id', 'user_id']);
         });
     }
 

@@ -13,3 +13,4 @@ class Game extends Model
         return $this->hasMany('App\Models\TicketLine'); 
     }
 }
+//
