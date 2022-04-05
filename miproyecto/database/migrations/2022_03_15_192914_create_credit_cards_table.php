@@ -20,7 +20,7 @@ class CreateCreditCardsTable extends Migration
             $table->string('cvv', 3);
             $table->string('cadMonth', 2); 
             $table->string('cadYear', 4); 
-            $table->foreignId('user_id')->constrained(); 
+            $table->foreignId('user_id')->constrained()->onCascade('delete'); 
         });
     }
 
