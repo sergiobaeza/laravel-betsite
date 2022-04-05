@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\TicketLinesController; 
-
+use App\Http\Controllers\TicketLinesController;
+use App\Http\Controllers\TicketsController;  
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +41,8 @@ Route::get('/ticketlines', [TicketLinesController::class, 'index'])->name('ticke
 
 Route::delete('/ticketlines/{id}', [TicketLinesController::class, 'destroy'])->name('ticketlines-delete'); 
 Route::get('/ticketlines/{id}', [TicketLinesController::class, 'show'])->name('ticketlines-edit'); 
-Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update'); 
+Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update');
+
+Route::get("/tickets", [TicketsController::class, 'index'])->name('tickets-index'); 
+Route::delete('/tickets/{id}', [TicketsController::class, 'destroy'])->name('tickets-delete');
+Route::get('/tickets/{id}', [TicketsController::class, 'show'])->name('tickets-edit');  
