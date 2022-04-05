@@ -11,37 +11,83 @@ use App\Models\Game;
 
 
 class GameController extends Controller{
+
+    private function validateGame(Request $request){
+        $request->validate([
+            'cuota1' => 'required',
+            'cuotaX' => 'required', 
+            'cuota2' => 'required',
+            'equipo1' => 'required',
+            'equipo2' => 'required',
+            'golesLocal' => 'required',
+            'golesVisitante' => 'required'
+        ]); 
+        
+    }
+
+    public function store(Request $request){
+        // validamos los datos
+        $this->validateGame($request); 
+
+
+        $game = new Game();
+        $game->cuota1 = $request->cuota1;
+        $game->cuotaX = $request->cuotaX;
+        $game->cuota2 = $request->cuota2; 
+        $game->equipo1 = $request->equipo1; 
+        $game->equipo2 = $request->equipo2;
+        $game->golesLocal = $request->golesLocal; 
+        $game->golesVisitante = $request->golesVisitante; 
+
+        $game->save(); 
+        return redirect()->route('games-add')->with('success', 'Partido creado correctamente'); 
+    }
+
+    
     
     public function index(){
-        $games = Game::all();
-        //return view('games.index', ['games' => $games]);
+        $games = Game::paginate(10);
+        return view('games.index', ['games' => $games]); 
     }
 
     public function show($id){
-        $game = Game::find($id);
-        //return view('games.show', ['game' => $game]);
+        $game = Game::findOrFail($id); 
+        return view('games.show', ['game' => $game]);
     }
+
 
     public function update(Request $request, $id){
-        $game = Game::find($id);
-        $game->id = $request->id;
-        $game->cuota1 = $request->cuato1;
-        $game->cuotaX = $request->cuatoX;
-        $game->cuota2 = $request->cuato2;
+        // validamos los datos
+
+        $request->validate([
+            'cuota1' => 'required',
+            'cuotaX' => 'required', 
+            'cuota2' => 'required', 
+            'equipo1' => 'required',
+            'equipo2' => 'required',
+
+        ]); 
+        
+
+
+        $game = Game::find($id); 
+        $game->cuota1 = $request->cuota1; 
+        $game->cuota2 = $request->cuota2;
         $game->equipo1 = $request->equipo1;
         $game->equipo2 = $request->equipo2;
-        $game->golesLocal = $request->golesLocal;
-        $game->golesVisitante = $request->golesVisitante;
-        $game->timestamps = $request->timestamps;
+        if($request->golesLocal != NULL)
+            $game->golesLocal = $request->golesLocal; 
+        if($request->golesVisitante != NULL)
+            $game->golesVisitante = $request->golesVisitante;
 
-        //return redirect()->route('games')->with('success', 'Partido actualizado');
+        $game->save(); 
+        return redirect()->route('games-edit', ['id' => $game->id])->with('success', 'Partido actualizado correctamente'); 
     }
 
-    public function destroy($id){
+    public function destroy(Request $request, $id){
         $game = Game::find($id);
-        $game->delete;
-
-        return redirect()->route('games')->with('success', 'Partido eleminado');
+        $game->delete(); 
+        return redirect()->route('games-index')->with('success', 'Partido ' . $game .' eliminado correctamente');
     }
 
     

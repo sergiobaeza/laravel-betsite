@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TicketLinesController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\TicketsController;  
 
 /*
@@ -43,6 +44,16 @@ Route::get('/ticketlines', [TicketLinesController::class, 'index'])->name('ticke
 
 Route::delete('/ticketlines/{id}', [TicketLinesController::class, 'destroy'])->name('ticketlines-delete'); 
 Route::get('/ticketlines/{id}', [TicketLinesController::class, 'show'])->name('ticketlines-edit'); 
+Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update'); 
+
+
+Route::get('/games/add', function() { return view('games.form'); })->name('games-add');
+Route::post('games/add', [GameController::class, 'store'])->name('games-store');  
+Route::get('/games', [GameController::class, 'index'])->name('games-index');
+
+Route::delete('/games/{id}', [GameController::class, 'destroy'])->name('games-delete'); 
+Route::get('/games/{id}', [GameController::class, 'show'])->name('games-edit'); 
+Route::patch('/games/{id}', [GameController::class, 'update'])->name('games-update'); 
 Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update');
 
 Route::get("/tickets", [TicketsController::class, 'index'])->name('tickets-index'); 
