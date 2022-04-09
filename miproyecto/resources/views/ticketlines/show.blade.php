@@ -28,7 +28,26 @@
                 <label for="title" class="form-label">Cuota elegida </label>
                 <input type="text" class="form-control mb-2" name="cuota" id="cuota" placeholder="Introduce la cuota" value="{{ $ticketline->cuotaElegida }}">
 
-                <label for="title" class="form-label">Game ID </label>
+                <label for="title" class="form-label">Resultado </label>
+                <select id="resultado" name="resultado" class="form-control">
+                    @if ($ticketline->resultado == '1')    
+                    <option value="1" selected>Ganador Local</option>
+                    <option value="X">Empate</option>
+                    <option value="2">Ganador Visitante</option>
+                    @endif
+                    @if ($ticketline->resultado == 'X') 
+                    <option value="1">Ganador Local</option>
+                    <option value="X" selected>Empate</option>
+                    <option value="2">Ganador Visitante</option>
+                    @endif
+                    @if ($ticketline->resultado == '2')
+                    <option value="1" >Ganador Local</option>
+                    <option value="X">Empate</option>
+                    <option value="2" selected>Ganador Visitante</option>
+                    @endif
+                </select> 
+
+                <label for="title" class="form-label mt-2">Game ID </label>
                 <input type="text" class="form-control mb-2" name="game" id="game" placeholder="ID" value="{{ $ticketline->game_id }}">
 
                 <label for="title" class="form-label">Ticket ID </label>
