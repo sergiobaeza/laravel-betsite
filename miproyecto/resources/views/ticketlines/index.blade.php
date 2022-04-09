@@ -34,6 +34,7 @@
                 <th scope="col">Cuota Elegida</th>
                 <th scope="col">Game ID</th>
                 <th scope="col">Ticket ID</th>
+                <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
