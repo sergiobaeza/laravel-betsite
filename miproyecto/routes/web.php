@@ -56,7 +56,7 @@ Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->nam
 Route::get('/games/add', function() { return view('games.form'); })->name('games-add');
 Route::post('games/add', [GameController::class, 'store'])->name('games-store');  
 Route::get('/games', [GameController::class, 'index'])->name('games-index');
-
+Route::post('/games', [GameController::class, 'filter'])->name('games-filter'); 
 Route::delete('/games/{id}', [GameController::class, 'destroy'])->name('games-delete'); 
 Route::get('/games/{id}', [GameController::class, 'show'])->name('games-edit'); 
 Route::patch('/games/{id}', [GameController::class, 'update'])->name('games-update'); 

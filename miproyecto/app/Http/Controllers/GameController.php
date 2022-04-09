@@ -43,6 +43,25 @@ class GameController extends Controller{
         return redirect()->route('games-add')->with('success', 'Partido creado correctamente'); 
     }
 
+
+
+    public function filter(Request $request){
+        if($request->local == null && $request->visitante == null){
+            return redirect()->route('games-index'); 
+        }
+        else if($request->local != null && $request->visitante == null){
+            $games = Game::where('equipo1', 'LIKE', '%' . $request->local . '%')->paginate(15); 
+            return view('games.index', ['games' => $games]); 
+        }
+        else if($request->local == null && $request->visitante != null){
+            $games = Game::where('equipo2', 'LIKE', '%' . $request->visitante . '%')->paginate(15); 
+            return view('games.index', ['games' => $games]); 
+        }
+        else{
+            $games = Game::where('equipo1', 'LIKE', '%' . $request->local . '%')->where('equipo2', 'LIKE', '%' . $request->visitante . '%')->paginate(15); 
+            return view('games.index', ['games' => $games]); 
+        }
+    }
     
     
     public function index(){

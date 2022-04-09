@@ -23,6 +23,13 @@
 
                 
             </div>
+
+            <form class="form-inline" action="{{ route('games-filter') }}" method="POST">
+                @csrf
+                    <input class="d-inline form-control mr-sm-2" type="search" name="local" id="local" placeholder="Filtrar por equipo local..." aria-label="Search">
+                    <input class="d-inline form-control mr-sm-2" type="search" name="visitante" id="visitante" placeholder="Filtrar por equipo visitante..." aria-label="Search">
+                    <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
+                </form>
             
             
         </div>
