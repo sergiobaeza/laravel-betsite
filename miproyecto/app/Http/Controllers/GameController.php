@@ -65,6 +65,8 @@ class GameController extends Controller{
             'cuota2' => 'required', 
             'equipo1' => 'required',
             'equipo2' => 'required',
+            'golesLocal' => 'required',
+            'golesVisitante' => 'required'
 
         ]); 
         
@@ -73,12 +75,11 @@ class GameController extends Controller{
         $game = Game::find($id); 
         $game->cuota1 = $request->cuota1; 
         $game->cuota2 = $request->cuota2;
+        $game->cuotaX = $request->cuotaX;
         $game->equipo1 = $request->equipo1;
         $game->equipo2 = $request->equipo2;
-        if($request->golesLocal != NULL)
-            $game->golesLocal = $request->golesLocal; 
-        if($request->golesVisitante != NULL)
-            $game->golesVisitante = $request->golesVisitante;
+        $game->golesLocal = $request->golesLocal; 
+        $game->golesVisitante = $request->golesVisitante;
 
         $game->save(); 
         return redirect()->route('games-edit', ['id' => $game->id])->with('success', 'Partido actualizado correctamente'); 
@@ -87,7 +88,7 @@ class GameController extends Controller{
     public function destroy(Request $request, $id){
         $game = Game::find($id);
         $game->delete(); 
-        return redirect()->route('games-index')->with('success', 'Partido ' . $game .' eliminado correctamente');
+        return redirect()->route('games-index')->with('success', 'Partido ' . $game->id .' eliminado correctamente');
     }
 
     

@@ -32,7 +32,7 @@
                 <input type="number" step="0.01" class="form-control mb-2" name="cuota2" id="cuota2" placeholder="valor cuota2" value="{{ $game->cuota2 }}">
 
                 <label for="title" class="form-label">CuotaX </label>
-                <input type="number" class="form-control mb-2" name="cuotaX" id="cuota2" placeholder="valor cuotaX" value="{{ $game->cuotaX }}">
+                <input type="number" step="0.01" class="form-control mb-2" name="cuotaX" id="cuota2" placeholder="valor cuotaX" value="{{ $game->cuotaX }}">
 
 
                 <label for="title" class="form-label">Equipo1 </label>
