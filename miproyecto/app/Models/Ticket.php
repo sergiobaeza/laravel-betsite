@@ -17,7 +17,7 @@ class Ticket extends Model
     }
 
     public function user(){
-        return $this->belongsTo('App\Models\Users'); 
+        return $this->belongsTo('App\Models\User'); 
     }
 
 }

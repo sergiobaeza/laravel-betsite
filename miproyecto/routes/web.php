@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TicketLinesController;
 use App\Http\Controllers\GameController;
-use App\Http\Controllers\TicketsController;  
+use App\Http\Controllers\TicketsController; 
+use App\Http\Controllers\CreditCardsController;  
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,10 @@ Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users-d
 Route::get('/users/{id}', [UsersController::class, 'show'])->name('users-edit'); 
 Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users-update'); 
 
+// Credit Card
+Route::post('/users/{id}/creditcards/add', [CreditCardsController::class, 'store'])->name('creditcards-store'); 
+Route::patch('users/creditcards/{id}', [CreditCardsController::class, 'update'])->name('creditcards-update'); 
+Route::delete('/users/creditcards/{id}', [CreditCardsController::class, 'destroy'])->name('creditcards-delete'); 
 
 
 Route::get('/ticketlines/add', function() { return view('ticketlines.form'); })->name('ticketlines-add');
