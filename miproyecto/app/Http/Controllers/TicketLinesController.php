@@ -9,9 +9,9 @@ class TicketLinesController extends Controller
 {
     public function validateTicketLines(Request $request){
         $request->validate([
-            'cuotaElegida' => 'required',
-            'game_id' => 'required',
-            'ticket_id' => 'required',
+            'cuota' => 'required',
+            'game' => 'required',
+            'ticket' => 'required',
             'resultado' => 'required'
         ]);
         
