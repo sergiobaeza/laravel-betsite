@@ -28,6 +28,10 @@
                 <th scope="col">Id</th>
                 <th scope="col">Dinero Apostado</th>
                 <th scope="col">Usuario</th>
+                <th scope="col">Cuota</th>
+                <th scope="col">Premio</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
@@ -40,6 +44,9 @@
                 <th scope="row">{{ $ticket->id }}</th>
                 <td>{{ $ticket->dineroApostado }}</td>
                 <td>{{ $ticket->user_id }}</td>
+                <td>{{ $ticket->getMultiplicador() }}</td>
+                <td>{{ $ticket->getPremio() }}</td>
+                <td>{{ $ticket->status()->value }} </td>
                 <td>                     
 
                     <!-- Button trigger modal -->

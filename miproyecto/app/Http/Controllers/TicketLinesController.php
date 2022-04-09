@@ -12,6 +12,7 @@ class TicketLinesController extends Controller
         $ticketline->cuotaElegida = $request->cuota;
         $ticketline->game_id = $request->game;
         $ticketline->ticket_id = $request->ticket;
+        $ticketline->resultado = $request->resultado; 
         $ticketline->save();
 
         return redirect()->route('ticketlines-add')->with('success', 'Línea de boleto creada correctamente');
@@ -32,9 +33,10 @@ class TicketLinesController extends Controller
         $ticketline->cuotaElegida = $request->cuota;
         $ticketline->game_id = $request->game;
         $ticketline->ticket_id = $request->ticket;
+        $ticketline->resultado = $request->resultado; 
         $ticketline->save();
 
-        return redirect()->route('ticketlines-edit', ['id' => $ticketline->ticket_id])->with('succes', 'Línea de boleto actualizada correctamente');
+        return redirect()->route('ticketlines-edit', ['id' => $ticketline->ticket_id])->with('success', 'Línea de boleto actualizada correctamente');
 
     }
 

@@ -26,4 +26,18 @@ class User extends Model
         if($email)
             return $query->where('email', '=', '$email'); 
     }
+
+    public function addSaldo($saldo){
+        $this->balance = $saldo + $this->balance; 
+    }
+
+    public function removeSaldo($saldo){
+        if(($this->balance-$saldo) >= 0){
+            $this->balance = ($this->balance-$saldo);
+            return true; 
+        }
+        else{
+            return false; 
+        }
+    }
 }
