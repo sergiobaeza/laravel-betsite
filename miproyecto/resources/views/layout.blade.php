@@ -13,7 +13,7 @@
   <body style="background-color: #ddf5e3d1;">
   <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="https://i.imgur.com/vcIWG0u.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="{{ asset('img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
     DSSBet 
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
