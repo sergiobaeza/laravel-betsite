@@ -42,15 +42,17 @@ Route::post('/users/{id}/creditcards/add', [CreditCardsController::class, 'store
 Route::patch('users/creditcards/{id}', [CreditCardsController::class, 'update'])->name('creditcards-update'); 
 Route::delete('/users/creditcards/{id}', [CreditCardsController::class, 'destroy'])->name('creditcards-delete'); 
 
-
+// Ticket Lines
 Route::get('/ticketlines/add', function() { return view('ticketlines.form'); })->name('ticketlines-add');
-Route::post('ticketlines/add', [TicketLinesController::class, 'store'])->name('ticketlines-store');  
+Route::post('ticketlines/add', [TicketLinesController::class, 'store'])->name('ticketlines-store');
+Route::get('/ticketlines/order/{opt}', [TicketLinesController::class, 'indexBy'])->name('ticketlines-index-order'); 
 Route::get('/ticketlines', [TicketLinesController::class, 'index'])->name('ticketlines-index');
 
 Route::delete('/ticketlines/{id}', [TicketLinesController::class, 'destroy'])->name('ticketlines-delete'); 
 Route::get('/ticketlines/{id}', [TicketLinesController::class, 'show'])->name('ticketlines-edit'); 
 Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update'); 
 
+// Games
 Route::get('/games/add', function() { return view('games.form'); })->name('games-add');
 Route::post('games/add', [GameController::class, 'store'])->name('games-store');  
 Route::get('/games', [GameController::class, 'index'])->name('games-index');
@@ -60,6 +62,7 @@ Route::get('/games/{id}', [GameController::class, 'show'])->name('games-edit');
 Route::patch('/games/{id}', [GameController::class, 'update'])->name('games-update'); 
 Route::patch('/ticketlines/{id}', [TicketLinesController::class, 'update'])->name('ticketlines-update');
 
+// Ticket
 Route::get('/tickets/add', function() { return view('tickets.form'); })->name('tickets-add');
 Route::get("/tickets", [TicketsController::class, 'index'])->name('tickets-index'); 
 Route::delete('/tickets/{id}', [TicketsController::class, 'destroy'])->name('tickets-delete');

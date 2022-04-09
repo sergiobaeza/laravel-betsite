@@ -24,6 +24,9 @@
         </div>
             Ordenar por:
             <a href="/ticketlines">Id</a>
+            <a href="/ticketlines/order/cuotaElegida">Cuota Elegida</a>
+            <a href="/ticketlines/order/game_id">Game ID</a>
+            <a href="/ticketlines/order/ticket_id">Ticket ID</a>
             <table class="table table-striped table-hover">
             <thead>
                 <tr>

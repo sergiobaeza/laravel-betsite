@@ -7,7 +7,18 @@ use App\Models\TicketLine;
 
 class TicketLinesController extends Controller
 {
+    public function validateTicketLines(Request $request){
+        $request->validate([
+            'cuotaElegida' => 'required',
+            'game_id' => 'required',
+            'ticket_id' => 'required',
+            'resultado' => 'required'
+        ]);
+        
+    }
     public function store(Request $request){
+        $this->validateTicketLines($request);
+
         $ticketline = new TicketLine;
         $ticketline->cuotaElegida = $request->cuota;
         $ticketline->game_id = $request->game;
@@ -29,6 +40,7 @@ class TicketLinesController extends Controller
     }
 
     public function update(Request $request, $id){
+        $this->validateTicketLines($request);
         $ticketline = TicketLine::find($id);
         $ticketline->cuotaElegida = $request->cuota;
         $ticketline->game_id = $request->game;
@@ -38,6 +50,20 @@ class TicketLinesController extends Controller
 
         return redirect()->route('ticketlines-edit', ['id' => $ticketline->ticket_id])->with('success', 'Línea de boleto actualizada correctamente');
 
+    }
+
+    public function indexBy($opt){
+        $ticketline = TicketLine::paginate(15); 
+        if($opt == 'cuotaElegida'){
+            $ticketline = TicketLine::orderBy('cuotaElegida', 'DESC')->paginate(15); 
+        }
+        else if($opt == 'game_id'){
+            $ticketline = TicketLine::orderBy('game_id', 'DESC')->paginate(15); 
+        }
+        else if($opt == 'ticket_id'){
+            $ticketline = TicketLine::orderBy('ticket_id', 'DESC')->paginate(15); 
+        }
+        return view('ticketlines.index', ['ticketlines' => $ticketline]);
     }
 
     public function destroy($id){
