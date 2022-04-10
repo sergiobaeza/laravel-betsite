@@ -14,13 +14,13 @@ class GameController extends Controller{
 
     private function validateGame(Request $request){
         $request->validate([
-            'cuota1' => 'required',
-            'cuotaX' => 'required', 
-            'cuota2' => 'required',
+            'cuota1' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'cuotaX' => 'required|regex:/^\d+(\.\d{1,2})?$/', 
+            'cuota2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'equipo1' => 'required',
             'equipo2' => 'required',
-            'golesLocal' => 'required',
-            'golesVisitante' => 'required'
+            'golesLocal' => 'required|integer',
+            'golesVisitante' => 'required|integer'
         ]); 
         
     }
@@ -43,6 +43,25 @@ class GameController extends Controller{
         return redirect()->route('games-add')->with('success', 'Partido creado correctamente'); 
     }
 
+
+
+    public function filter(Request $request){
+        if($request->local == null && $request->visitante == null){
+            return redirect()->route('games-index'); 
+        }
+        else if($request->local != null && $request->visitante == null){
+            $games = Game::where('equipo1', 'LIKE', '%' . $request->local . '%')->paginate(15); 
+            return view('games.index', ['games' => $games]); 
+        }
+        else if($request->local == null && $request->visitante != null){
+            $games = Game::where('equipo2', 'LIKE', '%' . $request->visitante . '%')->paginate(15); 
+            return view('games.index', ['games' => $games]); 
+        }
+        else{
+            $games = Game::where('equipo1', 'LIKE', '%' . $request->local . '%')->where('equipo2', 'LIKE', '%' . $request->visitante . '%')->paginate(15); 
+            return view('games.index', ['games' => $games]); 
+        }
+    }
     
     
     public function index(){
@@ -58,27 +77,25 @@ class GameController extends Controller{
 
     public function update(Request $request, $id){
         // validamos los datos
-
         $request->validate([
-            'cuota1' => 'required',
-            'cuotaX' => 'required', 
-            'cuota2' => 'required', 
+            'cuota1' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'cuotaX' => 'required|regex:/^\d+(\.\d{1,2})?$/', 
+            'cuota2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'equipo1' => 'required',
             'equipo2' => 'required',
-
-        ]); 
-        
+            'golesLocal' => 'required|integer',
+            'golesVisitante' => 'required|integer'
+        ]);
 
 
         $game = Game::find($id); 
         $game->cuota1 = $request->cuota1; 
         $game->cuota2 = $request->cuota2;
+        $game->cuotaX = $request->cuotaX;
         $game->equipo1 = $request->equipo1;
         $game->equipo2 = $request->equipo2;
-        if($request->golesLocal != NULL)
-            $game->golesLocal = $request->golesLocal; 
-        if($request->golesVisitante != NULL)
-            $game->golesVisitante = $request->golesVisitante;
+        $game->golesLocal = $request->golesLocal; 
+        $game->golesVisitante = $request->golesVisitante;
 
         $game->save(); 
         return redirect()->route('games-edit', ['id' => $game->id])->with('success', 'Partido actualizado correctamente'); 
@@ -87,7 +104,7 @@ class GameController extends Controller{
     public function destroy(Request $request, $id){
         $game = Game::find($id);
         $game->delete(); 
-        return redirect()->route('games-index')->with('success', 'Partido ' . $game .' eliminado correctamente');
+        return redirect()->route('games-index')->with('success', 'Partido ' . $game->id .' eliminado correctamente');
     }
 
     

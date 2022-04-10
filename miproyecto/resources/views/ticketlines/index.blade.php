@@ -24,6 +24,9 @@
         </div>
             Ordenar por:
             <a href="/ticketlines">Id</a>
+            <a href="/ticketlines/order/cuotaElegida">Cuota Elegida</a>
+            <a href="/ticketlines/order/game_id">Game ID</a>
+            <a href="/ticketlines/order/ticket_id">Ticket ID</a>
             <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -31,27 +34,28 @@
                 <th scope="col">Cuota Elegida</th>
                 <th scope="col">Game ID</th>
                 <th scope="col">Ticket ID</th>
+                <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
 
-        @foreach ($ticketline as $ticketlines)
+        @foreach ($ticketlines as $ticketline)
 
             <tbody>
                 <tr>
-                <th scope="row">{{ $ticketlines->id }}</th>
-                <td>{{ $ticketlines->cuotaElegida }}</td>
-                <td>{{ $ticketlines->game_id }}</td>
-                <td>{{ $ticketlines->ticket_id }}</td>
+                <th scope="row">{{ $ticketline->id }}</th>
+                <td>{{ $ticketline->cuotaElegida }}</td>
+                <td>{{ $ticketline->game_id }}</td>
+                <td>{{ $ticketline->ticket_id }}</td>
                 <td>                     
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteTicketLine">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteTicketLine{{ $ticketline->id }}">
                         Eliminar
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="deleteTicketLine" tabindex="-1" role="dialog" aria-labelledby="deleteTicketLineModal" aria-hidden="true">
+                    <div class="modal fade" id="deleteTicketLine{{ $ticketline->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteTicketLineModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -61,11 +65,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Estás seguro que deseas eliminar la línea de boleto con id <b>{{ $ticketlines->id }}</b>?. Esta accion no será reversible
+                            ¿Estás seguro que deseas eliminar la línea de boleto con id <b>{{ $ticketline->id }}</b>?. Esta accion no será reversible
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <form action="{{ route('ticketlines-delete', [$ticketlines->id]) }}" method="POST">
+                            <form action="{{ route('ticketlines-delete', [$ticketline->id]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -75,7 +79,7 @@
                     </div>
                     </div>
 
-                    <form class="d-inline" action="{{ route('ticketlines-edit', ['id' => $ticketlines->id]) }}">
+                    <form class="d-inline" action="{{ route('ticketlines-edit', ['id' => $ticketline->id]) }}">
                         <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                     </form>
 
@@ -89,7 +93,7 @@
         @endforeach
         </table>
         <div class="d-flex justify-content-center">
-            {{ $ticketline->links() }}
+            {{ $ticketlines->links() }}
         </div>
         </div>
     

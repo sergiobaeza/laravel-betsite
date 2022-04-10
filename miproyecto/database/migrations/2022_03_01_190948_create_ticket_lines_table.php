@@ -16,9 +16,10 @@ class CreateTicketLinesTable extends Migration
         Schema::create('ticket_lines', function (Blueprint $table) {
             $table->id();
             $table->float('cuotaElegida');
+            $table->string('resultado')->default('null'); 
             $table->timestamps();
-            $table->foreignId('game_id')->constrained();        
-            $table->foreignId('ticket_id')->constrained();
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');        
+            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');       
             $table->unique(['game_id', 'ticket_id']);
         });
     }

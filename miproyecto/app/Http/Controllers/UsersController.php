@@ -13,7 +13,7 @@ class UsersController extends Controller
             'name' => 'required|string',
             'email' => 'required|unique:App\Models\User,email', 
             'password' => 'required',
-            'balance' => 'required'
+            'balance' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]); 
         
     }
@@ -58,7 +58,7 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required', 
-            'balance' => 'required'
+            'balance' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]); 
         
 

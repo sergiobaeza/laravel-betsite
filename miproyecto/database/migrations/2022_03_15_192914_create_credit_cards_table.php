@@ -15,12 +15,13 @@ class CreateCreditCardsTable extends Migration
     {
         Schema::create('credit_cards', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');     
             $table->timestamps();
             $table->string('num',16);
             $table->string('cvv', 3);
             $table->string('cadMonth', 2); 
             $table->string('cadYear', 4); 
-            $table->foreignId('user_id')->constrained(); 
+
         });
     }
 
