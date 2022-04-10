@@ -10,8 +10,8 @@ class TicketLinesController extends Controller
     public function validateTicketLines(Request $request){
         $request->validate([
             'cuota' => 'required',
-            'game' => 'required',
-            'ticket' => 'required',
+            'game' => 'required|exists:games,id',
+            'ticket' => 'required|exists:tickets,id',
             'resultado' => 'required'
         ]);
         

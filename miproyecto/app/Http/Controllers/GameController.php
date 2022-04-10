@@ -14,13 +14,13 @@ class GameController extends Controller{
 
     private function validateGame(Request $request){
         $request->validate([
-            'cuota1' => 'required',
-            'cuotaX' => 'required', 
-            'cuota2' => 'required',
+            'cuota1' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'cuotaX' => 'required|regex:/^\d+(\.\d{1,2})?$/', 
+            'cuota2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'equipo1' => 'required',
             'equipo2' => 'required',
-            'golesLocal' => 'required',
-            'golesVisitante' => 'required'
+            'golesLocal' => 'required|integer',
+            'golesVisitante' => 'required|integer'
         ]); 
         
     }
@@ -77,18 +77,15 @@ class GameController extends Controller{
 
     public function update(Request $request, $id){
         // validamos los datos
-
         $request->validate([
-            'cuota1' => 'required',
-            'cuotaX' => 'required', 
-            'cuota2' => 'required', 
+            'cuota1' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'cuotaX' => 'required|regex:/^\d+(\.\d{1,2})?$/', 
+            'cuota2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'equipo1' => 'required',
             'equipo2' => 'required',
-            'golesLocal' => 'required',
-            'golesVisitante' => 'required'
-
-        ]); 
-        
+            'golesLocal' => 'required|integer',
+            'golesVisitante' => 'required|integer'
+        ]);
 
 
         $game = Game::find($id); 

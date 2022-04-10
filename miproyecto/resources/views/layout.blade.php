@@ -25,16 +25,16 @@
         <a class="nav-link" href="#">Indice <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./users">Usuarios</a>
+        <a class="nav-link" href="{{ url('/users') }}">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./games">Games</a>
+        <a class="nav-link" href="{{ url('/games') }}">Games</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./tickets">Tickets</a>
+        <a class="nav-link" href="{{ url('/tickets') }}">Tickets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./ticketlines">TicketLines</a>
+        <a class="nav-link" href="{{ url('/ticketlines') }}">TicketLines</a>
       </li>
     </ul>
   </div>
