@@ -10,6 +10,12 @@ use App\Models\TicketLine;
 class TicketsController extends Controller
 {
     public function store(Request $request){
+        
+        $request->validate([
+            'dineroApostado' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'user_id' => 'required|exists:users,id'
+        ]); 
+        
         $ticket = new Ticket();
         $ticket->dineroApostado = $request->dineroApostado;
         $ticket->user_id = $request->user_id;
@@ -19,6 +25,11 @@ class TicketsController extends Controller
     }
 
     public function update(Request $request, $id) {
+
+        $request->validate([
+            'dineroApostado' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'user_id' => 'required|exists:users,id'
+        ]); 
 
         $ticket = Ticket::find($id);
         $ticket->dineroApostado = $request->dineroApostado;
