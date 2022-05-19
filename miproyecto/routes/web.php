@@ -69,3 +69,6 @@ Route::delete('/tickets/{id}', [TicketsController::class, 'destroy'])->name('tic
 Route::get('/tickets/{id}', [TicketsController::class, 'show'])->name('tickets-edit');  
 Route::post('tickets/add', [TicketsController::class, 'store'])->name('tickets-store');  
 Route::patch('/tickets/{id}', [TicketsController::class, 'update'])->name('tickets-update'); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -14,7 +14,6 @@ class TicketLinesController extends Controller
             'ticket' => 'required|exists:tickets,id',
             'resultado' => 'required'
         ]);
-        
     }
     public function store(Request $request){
         $this->validateTicketLines($request);
