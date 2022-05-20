@@ -17,6 +17,8 @@
     DSSBet 
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a href="{{ url('/login') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Iniciar sesión</a>
+    <a href="{{ url('/register') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Registrar usuario</a>
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
