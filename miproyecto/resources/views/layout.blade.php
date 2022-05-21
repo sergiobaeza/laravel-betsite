@@ -17,10 +17,18 @@
     DSSBet 
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <a href="{{ url('/login') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Iniciar sesión</a>
-    <a href="{{ url('/register') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Registrar usuario</a>
+    @guest
+      <a href="{{ url('/login') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Iniciar sesión</a>
+      <a href="{{ url('/register') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Registrar usuario</a>
+    @endguest
+    @auth
+      <a href="{{ url('/logout') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Cerrar sesión</a>
+    @endauth
+    
     <span class="navbar-toggler-icon"></span>
   </button>
+  @auth
+  @isadmin
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
@@ -40,6 +48,9 @@
       </li>
     </ul>
   </div>
+  @endisadmin
+  @endauth
+
 </nav>
 
 

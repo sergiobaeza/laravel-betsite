@@ -1,6 +1,7 @@
 @extends('layout')
 
 
+
 @section('title', 'Tickets')
 
 @section('content')
