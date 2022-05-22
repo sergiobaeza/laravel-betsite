@@ -6,6 +6,8 @@ use App\Http\Controllers\TicketLinesController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\TicketsController; 
 use App\Http\Controllers\CreditCardsController;  
+use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\CuponCookieController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,7 @@ use App\Http\Controllers\CreditCardsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/bet', [HomeController::class, 'matches'])->name('bet'); 
 
 //Route::get('/games', [GamesController::class, 'index'])->name('games');
 //Route::get('/games', [GamesController::class, 'show'])->name('games');
@@ -36,6 +36,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
+
+Route::post('cupon', [CuponCookieController::class, 'add'])->name('ticket-cookie-store');  
+Route::delete('/cupon/{matchId}', [CuponCookieController::class, 'delete'])->name('ticket-cookie-delete'); 
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/users/add', function() {return view('users.form'); })->name('users-add');

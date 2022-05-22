@@ -54,11 +54,11 @@
 </nav>
 
 
-    <div class="container mt-4 bg-white rounded">
+     <div class="container mt-4 ">
         @yield('content')
-    </div>
+    </div> 
     
-
+  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
