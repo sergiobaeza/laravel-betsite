@@ -15,7 +15,7 @@
         @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
         @endif
-
+    
         <div class="p-3 bg-white mb-10">
             <b><h3>Añadir saldo</h3></b>
             <div class="form-group">

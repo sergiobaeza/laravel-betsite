@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -71,7 +72,29 @@ class UsersController extends Controller
         $user->balance = $request->balance; 
 
         $user->save(); 
+
         return redirect()->route('users-edit', ['id' => $user->id])->with('success', 'Usuario actualizado correctamente'); 
+    }
+
+    public function updateProfileAuth(Request $request, $id){
+        // validamos los datos
+
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required', 
+            'balance' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+        ]); 
+        
+        $user = User::find($id); 
+        $user->name = $request->name; 
+        $user->email = $request->email; 
+        if($request->password != NULL)
+            $user->password = $request->password; 
+        $user->balance = $request->balance; 
+
+        $user->save(); 
+
+        return redirect()->route('session-profile', ['id' => $user->id])->with('success', 'Usuario  correctamente'); 
     }
 
     public function destroy(Request $request, $id){
@@ -106,5 +129,9 @@ class UsersController extends Controller
     public function show($id){
         $user = User::findOrFail($id); 
         return view('users.show', ['user' => $user]);
+    }
+
+    public function showProfileAuth() {
+        return view('session.user-profile', ['user' => Auth::user()]);  
     }
 }
