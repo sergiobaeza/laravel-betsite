@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/users/creditcards/{id}', [CreditCardsController::class, 'destroy'])->name('creditcards-delete'); 
     Route::post('/user/balance/add', [CreditCardsController::class, 'addUserBalance'])->name('user-add-balance'); 
     Route::post('/user/balance/withdraw', [CreditCardsController::class, 'withdrawUserBalance'])->name('user-withdraw-balance');  
+    Route::get('/user/tickets', [TicketsController::class, 'showUserTickets'])->name('user-tickets-show');
 
 }); 
 
