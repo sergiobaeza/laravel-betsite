@@ -61,6 +61,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/user/creditcards') }}">Añadir credito</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/user/tickets') }}">Historial de apuestas</a>
+      </li>
 
     </ul>
   </div>
