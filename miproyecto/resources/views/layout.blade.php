@@ -22,15 +22,17 @@
       <a href="{{ url('/register') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Registrar usuario</a>
     @endguest
     @auth
+      {{ Auth::user()->balance }} €
       <a href="{{ url('/logout') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Cerrar sesión</a>
     @endauth
     
     <span class="navbar-toggler-icon"></span>
   </button>
   @auth
-  @isadmin
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
+    @isadmin
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('/') }}">Indice <span class="sr-only">(current)</span></a>
       </li>
@@ -46,9 +48,22 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/ticketlines') }}">TicketLines</a>
       </li>
+      @endisadmin
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/') }}">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/bet') }}">Apostar</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/user/creditcards') }}">Añadir credito</a>
+      </li>
+
     </ul>
   </div>
-  @endisadmin
   @endauth
 
 </nav>

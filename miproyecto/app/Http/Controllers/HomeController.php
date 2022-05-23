@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Game;
 use Illuminate\Support\Facades\Cookie; 
 use App\Models\TicketLine; 
+use App\ServiceLayer\TicketServices; 
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -58,5 +60,35 @@ class HomeController extends Controller
         $multiplicador = round($multiplicador, 2); 
         return view('matches', ['games' => $games, 'myticket' => $myTicket, 'mult' => $multiplicador]); 
     }
+
+    public function createTicketUser(Request $request){
+        $request->validate([
+            'dineroApostado' => 'required|gte:1',
+        ]);
+        if(!Auth::check()){
+            return redirect()->back()->withErrors(['msg' => 'Debes iniciar sesión antes de apostar']);
+        }
+        $cookie = Cookie::get('ticket');
+        $cookie = json_decode($cookie, true); 
+        if($cookie == null || empty($cookie)){
+            return redirect()->back()->withErrors(['msg' =>  'Debes seleccionar más de un partido']);
+        }
+
+        $user = Auth::user(); 
+        $res = TicketServices::createTicket($cookie, $request->dineroApostado, $user); 
+
+
+        
+        if($res == null){
+            return redirect()->back()->withErrors(['msg' => 'No tienes suficiente saldo']);        
+        }
+        if($request->cookieSave == "1"){
+            return redirect()->back()->with('success', 'Creado tu cupon correctamente'); 
+        }
+        return redirect()->back()->withCookie(Cookie::forget('ticket'))->with('success', 'Creado tu cupon correctamente'); 
+
+    }
+
+
 
 }
