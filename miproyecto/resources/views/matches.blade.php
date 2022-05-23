@@ -14,10 +14,15 @@
    }
     </script>
 <div class="p-3">
+@if($errors->any())
+                <div class="alert alert-danger">{{ $errors->first() }}</div>
+        @endif
 @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
         @endif
-
+        <div class="d-flex justify-content-center">
+            {{ $games->links() }}
+        </div>
 <div class="row">
     
   <div class="col-12 col-md-6 bg-white p-3">
@@ -28,6 +33,8 @@
                 <h6><img src="{{ asset('img/match_icon.png') }}" width="20" height="20" class="d-inline-block align-top" alt="" class="mt-1">
                     {{ $game->equipo1 }} - {{ $game->equipo2 }}  &nbsp; &nbsp; &nbsp;       
                     <div class="mt-2">
+                    <div class="d-flex justify-content-center">
+
                         
                     <form action="{{ route('ticket-cookie-store', ['matchId' => $game->id, 'resultado' => '1', 'cuota' => $game->cuota1]) }}" method="POST">
                                 @method('POST')
@@ -48,6 +55,8 @@
                     </form>
 
                     </div>
+                 
+        </div>
                 
                 </h6>
                 <div style="height: 1px; width: 100%; background-color: black; " class="mt-3" ></div>
@@ -85,14 +94,29 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">Dinero a apostar</span>
   </div>
-  <input type="number" id="dineroApostado" oninput="calcular()" min="0" step=".01" class="form-control" placeholder="Euros" aria-label="Euros" aria-describedby="basic-addon1">
+  <form action="{{ route('user-ticket-create') }}" method="POST">
+                                @method('POST')
+                                @csrf
+  <input type="number" id="dineroApostado" oninput="calcular()" name="dineroApostado" min="0" step=".01" class="form-control" placeholder="Euros" aria-label="Euros" aria-describedby="basic-addon1">
 
 </div>
 <div>
-    <form action="" method="POST">
-                                @method('DELETE')
-                                @csrf
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="cookieSave" value="1" id="cookieSave">
+  <label class="form-check-label" for="cookieSave">
+    Mantener mis secciones
+  </label>
+</div>
+
+                                <div class="d-flex justify-content-center">
+                                  @auth
                                 <button type="submit" class="btn btn-success">Apostar</button>
+                                @endauth
+                                @guest
+                                Necesitas iniciar sesión para apostar
+                                @endguest
+        </div>
+                                
                             </form>
   </div>
   </div>

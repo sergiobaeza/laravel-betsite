@@ -7,8 +7,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\TicketsController; 
 use App\Http\Controllers\CreditCardsController;  
 use App\Http\Controllers\HomeController; 
-use App\Http\Controllers\CuponCookieController; 
-
+use App\Http\Controllers\CuponCookieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +35,20 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
+Route::post('/user/tickets', [HomeController::class, 'createTicketUser'])->name('user-ticket-create'); 
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/user/creditcards', [CreditCardsController::class, 'storeUserAuth'])->name('session-add-creditcard'); 
+    Route::get('/user/creditcards', [CreditCardsController::class, 'showUserAuth'])->name('session-credit-cards'); 
+    Route::patch('users/creditcards/{id}', [CreditCardsController::class, 'update'])->name('creditcards-update'); 
+    Route::delete('/users/creditcards/{id}', [CreditCardsController::class, 'destroy'])->name('creditcards-delete'); 
+    Route::post('/user/balance/add', [CreditCardsController::class, 'addUserBalance'])->name('user-add-balance'); 
+    Route::post('/user/balance/withdraw', [CreditCardsController::class, 'withdrawUserBalance'])->name('user-withdraw-balance');  
+
+}); 
+
+
+
 
 Route::post('cupon', [CuponCookieController::class, 'add'])->name('ticket-cookie-store');  
 Route::delete('/cupon/{matchId}', [CuponCookieController::class, 'delete'])->name('ticket-cookie-delete'); 
@@ -52,8 +65,6 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Credit Card
     Route::post('/users/{id}/creditcards/add', [CreditCardsController::class, 'store'])->name('creditcards-store'); 
-    Route::patch('users/creditcards/{id}', [CreditCardsController::class, 'update'])->name('creditcards-update'); 
-    Route::delete('/users/creditcards/{id}', [CreditCardsController::class, 'destroy'])->name('creditcards-delete'); 
 
     // Ticket Lines
     Route::get('/ticketlines/add', function() { return view('ticketlines.form'); })->name('ticketlines-add');
