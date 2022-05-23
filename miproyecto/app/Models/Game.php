@@ -28,5 +28,9 @@ class Game extends Model
             return GameResultEnum::EMPATE; 
         }
     }
+
+    public function getTitle(){
+        return $this->equipo1 . " - " . $this->equipo2; 
+    }
 }
 //
