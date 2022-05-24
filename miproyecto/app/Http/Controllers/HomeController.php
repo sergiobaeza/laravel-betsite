@@ -20,6 +20,10 @@ class HomeController extends Controller
     {
         return view('inicio');
     }
+    public function contacto()
+    {
+        return view('contacto');
+    }
 
     public function matches(){
         $games = Game::where('played', 'false')->paginate(15); 

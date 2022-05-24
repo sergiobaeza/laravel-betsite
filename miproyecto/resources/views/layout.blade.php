@@ -86,6 +86,21 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Vuelve al principio
+    <p class="mb-1">Al acceder, seguir utilizando o navegar en este sitio Web, el cliente debe acpetar que utilicemos ciertas cookies de navegación para mejorar su experiencia de
+        con nosotros. DSSBet solo utilizará cookies que mejoren su experiencia y no aquellas que interfieran con su privacidad.
+    </p>
+    <p class="mb-1">DSSBet cuenta con las oportunas licencias para operar en España emitidas por la Dirección General de Ordenación del Juego.
+    </p>
+    <p class="mb-1">ⓒ 2021 - 2022 DSSBet. Todos los derechos reservados
+    </p>
+    <p class="mb-0">
+      <a href="/contacto">Sobre nosotros</a>
+  </div>
+  </footer>
 </body>
 
 </html>
