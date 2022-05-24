@@ -3,56 +3,46 @@
 @section('title', 'Inicio')
 
 @section('content')
-<div class="p-3">
-    <div id="partido" class="mt-2 mb-3">
+<main>
 
-        <h6><img src="{{ asset('img/match_icon.png') }}" width="20" height="20" class="d-inline-block align-top" alt="" class="mt-1">
-            Manchester United - Aston Villa (01/04/2022) &nbsp; &nbsp; &nbsp;          
-            <button type="button" class="btn btn-primary btn-sm">1 1.37</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">X 5.21</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">2 11.00</button></h6>
-        <div style="height: 1px; width: 100%; background-color: black; " class="mt-3" ></div>
-        
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">DSSBet</h1>
+        <p class="lead text-muted">Tu portal de apuestas donde podrás disfrutar de una gran selección de partidos</p>
+      </div>
     </div>
+  </section>
 
-    <div id="partido" class="mt-2 mb-3">
-
-        <h6><img src="{{ asset('img/match_icon.png') }}" width="20" height="20" class="d-inline-block align-top" alt="" class="mt-1">
-            Manchester United - Aston Villa (01/04/2022) &nbsp; &nbsp; &nbsp;          
-            <button type="button" class="btn btn-primary btn-sm">1 1.37</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">X 5.21</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">2 11.00</button></h6>
-        <div style="height: 1px; width: 100%; background-color: black; " class="mt-3" ></div>
-        
+  <div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="{{ asset('img/final_champions.jpg') }}" width="100%" height="225" class="bd-placeholder-img card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text">Disfruta de la final de la Champions League y de las mejores cuotas!</p>
+                </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="{{ asset('img/rata.jpg') }}" width="100%" height="225" class="bd-placeholder-img card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text">Kylian Mbappé ha dedicido quedarse en el PSG!</p>
+                </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="{{ asset('img/city.jpeg') }}" width="100%" height="225" class="bd-placeholder-img card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text">El Manchester City se proclama campeón de la Premier League!</p>
+                </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div id="partido" class="mt-2 mb-3">
-
-        <h6><img src="{{ asset('img/match_icon.png') }}" width="20" height="20" class="d-inline-block align-top" alt="" class="mt-1">
-            Manchester United - Aston Villa (01/04/2022) &nbsp; &nbsp; &nbsp;          
-            <button type="button" class="btn btn-primary btn-sm">1 1.37</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">X 5.21</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">2 11.00</button></h6>
-        <div style="height: 1px; width: 100%; background-color: black; " class="mt-3" ></div>
-        
-    </div>
-
-    <div id="partido" class="mt-2 mb-3">
-
-        <h6><img src="{{ asset('img/match_icon.png') }}" width="20" height="20" class="d-inline-block align-top" alt="" class="mt-1">
-            Manchester United - Aston Villa (01/04/2022) &nbsp; &nbsp; &nbsp;          
-            <button type="button" class="btn btn-primary btn-sm">1 1.37</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">X 5.21</button> &nbsp;
-            <button type="button" class="btn btn-primary btn-sm">2 11.00</button></h6>
-        <div style="height: 1px; width: 100%; background-color: black; " class="mt-3" ></div>
-        
-    </div>
-
-
-
-
-
-    
-</div>
-
+  </div>
+</main>
 @endsection

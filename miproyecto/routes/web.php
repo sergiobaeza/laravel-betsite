@@ -30,6 +30,7 @@ Route::get('/bet', [HomeController::class, 'matches'])->name('bet');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contacto', [App\Http\Controllers\HomeController::class, 'contacto'])->name('contacto');
 
 Auth::routes();
 
