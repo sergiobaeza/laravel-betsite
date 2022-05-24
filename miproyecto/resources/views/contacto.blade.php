@@ -3,7 +3,7 @@
 @section('title', 'Sobre nosotros')
 
 @section('content')
-<div class="about-section">
+<div class="about-section bg-white p-3">
   <h1>Sobre nosotros</h1>
   <p>DSSBet S.A. es una empresa registrada en España. Está autorizada a proporcionar servicios de juego online a usuarios españoles bajo la Ley 13/2011, de 27 de mayo, de regulación del juego.</p>
     <p>DSSBet S.A. forma parte de Flutter Group, el grupo de empresas controladas, directa o indirectamente, por Flutter Entertainment Plc. </p>

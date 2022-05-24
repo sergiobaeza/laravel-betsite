@@ -14,10 +14,25 @@
 
 <body style="background-color: #ddf5e3d1;">
   <nav class="navbar navbar-light bg-light">
+    
     <a class="navbar-brand" href="{{ url('/') }}">
       <img src="{{ asset('img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
       DSSBet
     </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 link-secondary">Inicio</a></li>
+        <li><a href="/bet" class="nav-link px-2 link-dark">Apostar</a></li>
+        @auth
+        <li><a href="/user/tickets" class="nav-link px-2 link-dark">Historial</a></li>
+        <li><a href="/user/creditcards" class="nav-link px-2 link-dark">Añadir credito</a></li>
+        <li><a href="/user/profile" class="nav-link px-2 link-dark">Perfil</a></li>
+
+        @endauth
+        <li><a href="/contacto" class="nav-link px-2 link-dark">Contacto</a></li>
+      </ul>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       @guest
       <a href="{{ url('/login') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Iniciar sesión</a>
@@ -28,13 +43,14 @@
       <a href="{{ url('/logout') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Cerrar sesión</a>
       @endauth
 
-      <span class="navbar-toggler-icon"></span>
+      @isadmin<span class="navbar-toggler-icon"></span>@endisadmin
     </button>
-    @auth
+    
 
+          @isadmin
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        @isadmin
+
         <li class="nav-item active">
           <a class="nav-link" href="{{ url('/') }}">Indice <span class="sr-only">(current)</span></a>
         </li>
@@ -52,26 +68,9 @@
         </li>
         @endisadmin
         
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('/') }}">Home</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('/bet') }}">Apostar</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{{ url('/user/tickets') }}">Historial de apuestas</a>
-      </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('/user/creditcards') }}">Añadir credito</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('/user/profile') }}">Perfil</a>
-        </li>
-
       </ul>
     </div>
-    @endauth
+    
 
   </nav>
 
@@ -79,6 +78,7 @@
     @yield('content')
   </div>
 
+  
 
 
   <!-- Optional JavaScript -->
@@ -89,7 +89,7 @@
   <footer class="text-muted py-5">
   <div class="container">
     <p class="float-end mb-1">
-      <a href="#">Vuelve al principio
+      <a href="#">Vuelve al principio</a>
     <p class="mb-1">Al acceder, seguir utilizando o navegar en este sitio Web, el cliente debe acpetar que utilicemos ciertas cookies de navegación para mejorar su experiencia de
         con nosotros. DSSBet solo utilizará cookies que mejoren su experiencia y no aquellas que interfieran con su privacidad.
     </p>

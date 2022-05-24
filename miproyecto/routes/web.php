@@ -22,19 +22,13 @@ use App\Http\Controllers\CuponCookieController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 Route::get('/bet', [HomeController::class, 'matches'])->name('bet'); 
 
-//Route::get('/games', [GamesController::class, 'index'])->name('games');
-//Route::get('/games', [GamesController::class, 'show'])->name('games');
-//Route::path('/games', [GamesController::class, 'update'])->name('games-update');
-//Route::delete('/games', [GamesController::class, 'delete'])->name('games-delete');
  
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contacto', [App\Http\Controllers\HomeController::class, 'contacto'])->name('contacto');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::post('/user/tickets', [HomeController::class, 'createTicketUser'])->name('user-ticket-create'); 

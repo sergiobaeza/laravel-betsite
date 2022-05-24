@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="p-3">
+    <div class="p-3 bg-white">
         <form  method="POST" action="{{ route('users-update', ['id' => $user->id]) }}">
         @method('PATCH')    
         @csrf

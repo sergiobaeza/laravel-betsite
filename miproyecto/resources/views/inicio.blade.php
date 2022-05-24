@@ -45,4 +45,33 @@
     </div>
   </div>
 </main>
+
+
+<div class="container px-4 py-5 bg-white" id="featured-3">
+    <h2 class="pb-2 border-bottom">Caracteristicas</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon bg-primary bg-gradient">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+        </div>
+        <h2>Cobros automaticos</h2>
+        <p>
+          Una vez ganes tu apuesta el dinero aparecerá de forma automática en tu perfil y podrás retirarlo!
+        </p>      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-primary bg-gradient">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+        </div>
+        <h2>Las mejores cuotas</h2>
+        <p>Ofrecemos las mejores cuotas del mercado comparado con nuestra competencia!</p>
+            </div>
+      <div class="feature col">
+        <div class="feature-icon bg-primary bg-gradient">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+        </div>
+        <h2>Interfaz sencilla y responsiva</h2>
+        <p>Da igual si estás en un ordenador o en un móvil, podrás disfrutar de todas las funcionalidades de la aplicación</p>
+      </div>
+    </div>
+  </div>
 @endsection

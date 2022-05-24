@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="p-3">
+    <div class="p-3 bg-white">
 
         @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
