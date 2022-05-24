@@ -14,13 +14,12 @@
 
 <body style="background-color: #ddf5e3d1;">
   <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="{{ url('/') }}">
-    <img src="{{ asset('img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-    DSSBet 
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    @guest
-
+    <a class="navbar-brand" href="{{ url('/') }}">
+      <img src="{{ asset('img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+      DSSBet
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      @guest
       <a href="{{ url('/login') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Iniciar sesión</a>
       <a href="{{ url('/register') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Registrar usuario</a>
       @endguest
@@ -29,34 +28,9 @@
       <a href="{{ url('/logout') }}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">Cerrar sesión</a>
       @endauth
 
-
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-    @isadmin
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url('/') }}">Indice <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/users') }}">Usuarios</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/games') }}">Games</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/tickets') }}">Tickets</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/ticketlines') }}">TicketLines</a>
-      </li>
-      @endisadmin
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">Home</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/bet') }}">Apostar</a>
-      </li>
-
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    @auth
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -65,16 +39,16 @@
           <a class="nav-link" href="{{ url('/') }}">Indice <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/users') }}">Usuarios</a>
+          <a class="nav-link" href="{{ url('/admin/users') }}">Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/games') }}">Games</a>
+          <a class="nav-link" href="{{ url('/admin/games') }}">Games</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/tickets') }}">Tickets</a>
+          <a class="nav-link" href="{{ url('/admin/tickets') }}">Tickets</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/ticketlines') }}">TicketLines</a>
+          <a class="nav-link" href="{{ url('/admin/ticketlines') }}">TicketLines</a>
         </li>
         @endisadmin
         
