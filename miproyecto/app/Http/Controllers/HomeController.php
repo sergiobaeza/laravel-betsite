@@ -25,8 +25,7 @@ class HomeController extends Controller
         return view('contacto');
     }
 
-    public function matches(){
-        $games = Game::where('played', 'false')->paginate(15); 
+    private function getCookies(){
         $ck = Cookie::get('ticket'); 
         $myTicket = []; 
         $multiplicador = 0; 
@@ -51,7 +50,19 @@ class HomeController extends Controller
             }
         }
         
-        $multiplicador = round($multiplicador, 2); 
+        $multiplicador = round($multiplicador, 2);
+
+        return [$multiplicador, $myTicket]; 
+    }
+
+
+    public function matches(){
+        $games = Game::where('played', 'false')->paginate(15); 
+        $ck = []; 
+        $ck = self::getCookies();
+     
+        $myTicket = $ck[1]; 
+        $multiplicador = $ck[0]; 
         return view('matches', ['games' => $games, 'myticket' => $myTicket, 'mult' => $multiplicador]); 
     }
 
@@ -81,6 +92,30 @@ class HomeController extends Controller
         }
         return redirect()->back()->withCookie(Cookie::forget('ticket'))->with('success', 'Creado tu cupon correctamente'); 
 
+    }
+
+
+    public function matchesFilter(Request $request){
+        $ck = []; 
+        $ck = self::getCookies();
+     
+        $myTicket = $ck[1]; 
+        $multiplicador = $ck[0]; 
+        if($request->local == null && $request->visitante == null){
+            return view('matches', ['games' => $games, 'myticket' => $myTicket, 'mult' => $multiplicador]); 
+        }
+        else if($request->local != null && $request->visitante == null){
+            $games = Game::where('equipo1', 'LIKE', '%' . $request->local . '%')->where('played', 'false')->paginate(15); 
+            return view('matches', ['games' => $games, 'myticket' => $myTicket, 'mult' => $multiplicador]); 
+        }
+        else if($request->local == null && $request->visitante != null){
+            $games = Game::where('equipo2', 'LIKE', '%' . $request->visitante . '%')->where('played', 'false')->paginate(15); 
+            return view('matches', ['games' => $games, 'myticket' => $myTicket, 'mult' => $multiplicador]); 
+        }
+        else{
+            $games = Game::where('equipo1', 'LIKE', '%' . $request->local . '%')->where('played', 'false')->where('equipo2', 'LIKE', '%' . $request->visitante . '%')->paginate(15); 
+            return view('matches', ['games' => $games, 'myticket' => $myTicket, 'mult' => $multiplicador]); 
+        }
     }
 
 

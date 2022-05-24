@@ -23,9 +23,20 @@
         <div class="d-flex justify-content-center">
             {{ $games->links() }}
         </div>
+        
+        <div class="row mb-20">
+        <form class="form-inline" action="{{ route('bet-filter') }}" method="POST">
+                @csrf
+                    <input class="d-inline form-control mr-sm-2" type="search" name="local" id="local" placeholder="Filtrar por equipo local..." aria-label="Search">
+                    <input class="d-inline form-control mr-sm-2" type="search" name="visitante" id="visitante" placeholder="Filtrar por equipo visitante..." aria-label="Search">
+                    <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
+                    <a href="/bet"> <button class="d-inline btn btn-outline-warning my-2 my-sm-0" type="button">Resetear</button></a>
+                </form>
+        </div>
 <div class="row">
     
   <div class="col-12 col-md-6 bg-white p-3">
+    
     <b>Partidos disponibles</b>
         @foreach ($games as $game)
             <div id="partido" class="mt-2 mb-3">

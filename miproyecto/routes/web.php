@@ -21,7 +21,7 @@ use App\Http\Controllers\CuponCookieController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 Route::get('/bet', [HomeController::class, 'matches'])->name('bet'); 
-
+Route::post('/bet', [HomeController::class, 'matchesFilter'])->name('bet-filter'); 
  
 Auth::routes();
 
