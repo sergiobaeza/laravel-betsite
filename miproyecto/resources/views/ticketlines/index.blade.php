@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="p-3">
+    <div class="p-3 bg-white">
 
         @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -32,8 +32,8 @@
                 <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Cuota Elegida</th>
-                <th scope="col">Game ID</th>
-                <th scope="col">Ticket ID</th>
+                <th scope="col">Game</th>
+                <th scope="col">Ticket User</th>
                 <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -45,8 +45,8 @@
                 <tr>
                 <th scope="row">{{ $ticketline->id }}</th>
                 <td>{{ $ticketline->cuotaElegida }}</td>
-                <td>{{ $ticketline->game_id }}</td>
-                <td>{{ $ticketline->ticket_id }}</td>
+                <td>{{ $ticketline->game->getTitle() }}</td>
+                <td>{{ $ticketline->ticket->user->email }}</td>
                 <td>                     
 
                     <!-- Button trigger modal -->

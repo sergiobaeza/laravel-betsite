@@ -1,11 +1,12 @@
 @extends('layout')
 
 
+
 @section('title', 'Tickets')
 
 @section('content')
 
-    <div class="p-3">
+    <div class="p-3 bg-white">
 
         @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -31,6 +32,7 @@
                 <th scope="col">Cuota</th>
                 <th scope="col">Premio</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Cobrado</th>
                 <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -43,10 +45,11 @@
                 <tr>
                 <th scope="row">{{ $ticket->id }}</th>
                 <td>{{ $ticket->dineroApostado }}</td>
-                <td>{{ $ticket->user_id }}</td>
+                <td>{{ $ticket->user->email }}</td>
                 <td>{{ $ticket->getMultiplicador() }}</td>
                 <td>{{ $ticket->getPremio() }}</td>
                 <td>{{ $ticket->status()->value }} </td>
+                <td>{{ $ticket->paid }} </td>
                 <td>                     
 
                     <!-- Button trigger modal -->

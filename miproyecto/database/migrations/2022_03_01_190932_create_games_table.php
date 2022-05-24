@@ -22,6 +22,7 @@ class CreateGamesTable extends Migration
             $table->string('equipo2');
             $table->integer('golesLocal');
             $table->integer('golesVisitante');
+            $table->boolean('played')->default(false);
             $table->timestamps();
         });
     }

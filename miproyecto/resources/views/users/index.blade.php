@@ -4,8 +4,7 @@
 @section('title', 'Usuarios')
 
 @section('content')
-
-    <div class="p-3">
+    <div class="p-3 bg-white">
 
         @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -42,7 +41,6 @@
                 <th scope="col">Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Correo</th>
-                <th scope="col">Contraseña</th>
                 <th scope="col">Balance</th>
                 <th scope="col">Acciones</th>
                 </tr>
@@ -57,7 +55,6 @@
                 <th scope="row">{{ $user->id }}</th>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->password }}</td>
                 <td>{{ $user->balance }}</td>
                 <td>                     
 

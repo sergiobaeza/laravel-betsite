@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="p-3">
+    <div class="p-3 bg-white">
         <form  method="POST" action="{{ route('ticketlines-update', ['id' => $ticketline->id]) }}">
         @method('PATCH')    
         @csrf

@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="p-3">
+    <div class="p-3 bg-white">
         <form  method="POST" action="{{ route('ticketlines-store') }}">
             @csrf
 
@@ -40,7 +40,7 @@
                 <label for="title" class="form-label">Ticket ID </label>
                 <input type="text" class="form-control mb-2" name="ticket" id="ticket" placeholder="ID">
 
-                <input type="submit" value="Crear usuario" class="btn btn-primary my-2" />
+                <input type="submit" value="Crear TicketLine" class="btn btn-primary my-2" />
             </div>
         </form>
                     <div class="d-flex flex-row-reverse">
