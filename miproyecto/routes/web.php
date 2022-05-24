@@ -46,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/balance/withdraw', [CreditCardsController::class, 'withdrawUserBalance'])->name('user-withdraw-balance');  
     Route::get('/user/profile', [UsersController::class, 'showProfileAuth'])->name('session-profile'); 
     Route::patch('/user/profile/{id}', [UsersController::class, 'updateProfileAuth'])->name('session-profile-update'); 
+
+    Route::get('/user/tickets', [TicketsController::class, 'showUserTickets'])->name('user-tickets-show');
+
 }); 
 
 
